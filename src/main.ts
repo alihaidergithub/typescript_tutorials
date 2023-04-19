@@ -1,29 +1,29 @@
-//Basic Types
-//Number
+// Basic Types
+// Number
 let id:number = 6
 console.log('ID:',id)
 
-//String
+// String
 let company: string = 'Verge Future'
 console.log('Company:',company)
 
-//Boolean
+// Boolean
 let isPublished: boolean = true
 console.log('Published: ', isPublished)
 
-//Any Type
+// Any Type
 let x:any = 'Hello'
 console.log('Value of x: ', x)
 
-//Arrays
+// Arrays
 let ids:number[] = [1, 2, 3]
 console.log('IDs in Array: ', ids)
 
-//Tuple
+// Tuple
 let person:[string, number, boolean, any] = ['Ali Haider', 25626, true, 'Thank you!']
 console.log("Person Details: ", person)
 
-//Tuple Array
+// Tuple Array
 let employee: [number, string][]
 
 employee = [
@@ -33,7 +33,7 @@ employee = [
 ]
 console.log('Employees are: ', employee)
 
-//Enumeration
+// Enumeration
 enum Direction{
     Start = 1,
     Up = 'Up',
@@ -43,7 +43,7 @@ enum Direction{
 }
 console.log(Direction.Up)
 
-//Objects
+// Objects
 type User = {
     id:number,
     name: string,
@@ -55,7 +55,7 @@ const user: User = {
 }
 console.log('User is: ', user)
 
-//Type Assertion - 2 types of syntax
+// Type Assertion - 2 types of syntax
 let cid: any = 1
     //One
 let customerId = <number>cid
@@ -64,19 +64,19 @@ console.log(typeof(customerId))
 let customerId2= cid as string
 console.log(typeof(customerId2))
 
-//Functions - return value should be return in number
+// Functions - return value should be return in number
 function addNum(x:number, y:number) : number {
     return x + y 
 }
 console.log(addNum(3,5))
 
-//Void with Union
+// Void with Union
 function log(message: string | number) : void {
     console.log(message)
 }
 log('This is a test message')
 
-//Interface
+// Interface
 interface UserInterface {
     readonly id:number,
     name:string,
@@ -91,9 +91,25 @@ const user1: UserInterface = {
 // user1.id=50 // and if we make "ID as readonly" it throws an error the id is readonly property. 
 console.log(user1.name)
 
-//Interface with function
+// Interface with function
 interface Mathfunc {
     (x:number, y:number):number
 }
-
 const add: Mathfunc = (x,y):number => x + y
+console.log(add(10,5))
+
+// Classes
+class Person {
+    id: number
+    name: string
+    age: number
+
+    constructor(id:number, name:string, age:number){
+        this.id=id
+        this.name=name
+        this.age=age
+    }
+}
+
+const student = new Person(25626,'Ali Haider',28)
+console.log("Student Details", student as Person)
