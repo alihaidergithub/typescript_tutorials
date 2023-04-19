@@ -41,7 +41,7 @@ const user = {
     name: 'Ali Haider',
 };
 console.log('User is: ', user);
-//Type Assertion - 2 types
+//Type Assertion - 2 types of syntax
 let cid = 1;
 //One
 let customerId = cid;
@@ -59,3 +59,11 @@ function log(message) {
     console.log(message);
 }
 log('This is a test message');
+const user1 = {
+    id: 11,
+    name: 'Ali Haider',
+    // ? used with age due to error. If we do not write the age here the compiler will not throw error. 
+};
+// user1.id=50 // and if we make "ID as readonly" it throws an error the id is readonly property. 
+console.log(user1.name);
+const add = (x, y) => x + y;

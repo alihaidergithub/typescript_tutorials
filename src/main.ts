@@ -55,7 +55,7 @@ const user: User = {
 }
 console.log('User is: ', user)
 
-//Type Assertion - 2 types
+//Type Assertion - 2 types of syntax
 let cid: any = 1
     //One
 let customerId = <number>cid
@@ -76,3 +76,24 @@ function log(message: string | number) : void {
 }
 log('This is a test message')
 
+//Interface
+interface UserInterface {
+    readonly id:number,
+    name:string,
+    age?:number
+}
+
+const user1: UserInterface = {
+    id: 11,
+    name:'Ali Haider',
+    // ? used with age due to error. If we do not write the age here the compiler will not throw error. 
+}
+// user1.id=50 // and if we make "ID as readonly" it throws an error the id is readonly property. 
+console.log(user1.name)
+
+//Interface with function
+interface Mathfunc {
+    (x:number, y:number):number
+}
+
+const add: Mathfunc = (x,y):number => x + y
