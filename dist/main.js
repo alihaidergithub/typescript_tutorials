@@ -70,11 +70,39 @@ const add = (x, y) => x + y;
 console.log(add(10, 5));
 // Classes
 class Person {
-    constructor(id, name, age) {
+    constructor(id, name) {
         this.id = id;
         this.name = name;
-        this.age = age;
+    }
+    register() {
+        return `${this.name} is now registered`;
     }
 }
-const student = new Person(25626, 'Ali Haider', 28);
+const student = new Person(25626, 'Ali Haider');
 console.log("Student Details", student);
+// Sub-Class
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name); // Super is used for accessing parent class "Person" attributes
+        this.position = position;
+    }
+}
+const emp = new Employee(25626, 'Ali Haider', 'Developer');
+console.log(emp);
+console.log(emp.register());
+// Generics - used for reusable components
+// Given example shows the function 
+function getArray(items) {
+    return new Array().concat(items);
+}
+const numArray = getArray([1, 2, 3]);
+const strArray = getArray(['Ali', ['Developer'], ['Mansoob']]);
+numArray.push('Hello');
+// as you can see it should show an error as numArray has integer elements
+// tackling this issue we use GENERICS
+function getArrayy(itemss) {
+    return new Array().concat(itemss);
+}
+const numArrayy = getArrayy([1, 2, 3]);
+const strArrayy = getArrayy(['Hello', 'Testing']);
+strArrayy.push('Hi');

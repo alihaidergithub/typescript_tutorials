@@ -99,17 +99,52 @@ const add: Mathfunc = (x,y):number => x + y
 console.log(add(10,5))
 
 // Classes
-class Person {
+class Person implements UserInterface { //Here class implements as Interface
     id: number
     name: string
-    age: number
 
-    constructor(id:number, name:string, age:number){
+    constructor(id:number, name:string){
         this.id=id
         this.name=name
-        this.age=age
+    }
+
+    register(){
+        return `${this.name} is now registered`
     }
 }
 
-const student = new Person(25626,'Ali Haider',28)
+const student = new Person(25626,'Ali Haider')
 console.log("Student Details", student as Person)
+
+// Sub-Class
+class Employee extends Person { // extends used for making Employee as sub-class of Person class
+    position : string
+
+    constructor(id:number, name:string, position:string){
+        super(id,name) // Super is used for accessing parent class "Person" attributes
+        this.position=position
+    }
+} 
+const emp = new Employee(25626,'Ali Haider','Developer')
+console.log(emp)
+console.log(emp.register())
+
+// Generics - used for reusable components
+// Given example shows the function 
+function getArray(items:any[]):any[] {
+    return new Array().concat(items)
+}
+const numArray = getArray([1,2,3])
+const strArray = getArray(['Ali',['Developer'],['Mansoob']])
+numArray.push('Hello')
+// as you can see it should show an error as numArray has integer elements
+// tackling this issue we use GENERICS
+function getArrayy<T>(itemss:T[]):T[]{
+    return new Array().concat(itemss)
+}
+const numArrayy = getArrayy<number>([1,2,3])
+const strArrayy = getArrayy<string>(['Hello','Testing'])
+strArrayy.push('Hi')
+
+
+
